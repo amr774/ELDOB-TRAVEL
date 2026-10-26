@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  EMPLOYEE
+  CUSTOMER
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+model User {
+  id            String         @id @default(cuid())
+  fullName      String
+  email         String         @unique
+  password      String
+  phone         String?
+  role          Role           @default(CUSTOMER)
+  operationsEnabled Boolean    @default(false)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  refreshTokens RefreshToken[]
+  bookings      Booking[]
+  reviews       Review[]
+  favorites     Favorite[]
+  requests      ServiceRequest[]
+}
+
+model RefreshToken {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+}
+
+model Car {
+  id          String     @id @default(cuid())
+  name        String
+  brand       String
+  model       String
+  year        Int
+  pricePerDay Int
+  image       String?
+  images      String[]   @default([])
+  category    String?
+  capacity    Int?
+  available   Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  bookings    Booking[]
+  reviews     Review[]
+  favorites   Favorite[]
+}
+
+model Booking {
+  id         String        @id @default(cuid())
+  userId     String
+  user       User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  carId      String
+  car        Car           @relation(fields: [carId], references: [id])
+  startDate  DateTime
+  endDate    DateTime
+  totalPrice Int
+  status     BookingStatus @default(PENDING)
+  paidAt     DateTime?
+  pickupLocation String?
+  notes      String?
+  payments   Payment[]
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  @@index([carId, status])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  carId     String
+  car       Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, carId])
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  carId     String
+  car       Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, carId])
+}
+
+enum RequestKind {
+  TRIP
+  HOTEL
+  INQUIRY
+}
+
+model ServiceRequest {
+  id             String        @id @default(cuid())
+  hotelId        String?
+  hotel          Hotel?        @relation(fields: [hotelId], references: [id], onDelete: Restrict)
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  kind           RequestKind
+  status         BookingStatus @default(PENDING)
+  city           String?
+  pickupLocation String?
+  destination    String?
+  startDate      DateTime?
+  endDate        DateTime?
+  passengers     Int?
+  rooms          Int?
+  preference     String?
+  notes          String?
+  reply          String?
+  quotedPrice    Int?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  payments       Payment[]
+  @@index([userId, createdAt])
+  @@index([kind, status])
+}
+
+model Hotel {
+  id           String @id @default(cuid())
+  name         String
+  city         String
+  description  String @default("")
+  image        String @default("")
+  stars        Int @default(5)
+  pricePerNight Int?
+  available    Boolean @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  requests     ServiceRequest[]
+}
+
+model Payment {
+  id          String   @id @default(cuid())
+  bookingId   String?
+  booking     Booking? @relation(fields: [bookingId], references: [id], onDelete: Restrict)
+  requestId   String?
+  request     ServiceRequest? @relation(fields: [requestId], references: [id], onDelete: Restrict)
+  amount      Int
+  reference   String   @unique
+  recordedBy  String
+  createdAt   DateTime @default(now())
+}

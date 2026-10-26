@@ -1,0 +1,35 @@
+.brand-logo {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+}
+.public-site footer .brand-logo {
+  width: 112px;
+  height: 112px;
+}
+.workspace-brand .brand-logo {
+  width: 64px;
+  height: 64px;
+}
+.workspace-brand {
+  gap: 10px;
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .public-site .navigation .brand-logo {
+    width: 62px;
+    height: 62px;
+  }
+  .public-site .navigation .brand {
+    gap: 10px;
+    font-size: 16px;
+  }
+  .public-site footer .brand-logo {
+    width: 88px;
+    height: 88px;
+  }
+}

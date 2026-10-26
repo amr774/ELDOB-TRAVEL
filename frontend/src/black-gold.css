@@ -1,0 +1,259 @@
+/* Final public-site palette, loaded after the layout and component styles. */
+.public-site {
+  color-scheme: dark;
+  --navy: #0a0a0a;
+  --gold: #d6b568;
+  --muted: #bdb8ad;
+  --line: #393126;
+  --surface: #141414;
+  --ink: #f4efe4;
+  background: #090909;
+  color: var(--ink);
+}
+.public-site :is(h1, h2, h3),
+.public-site .car-bottom strong,
+.public-site .quote strong {
+  color: var(--ink);
+}
+.public-site :is(p, small, label),
+.public-site .empty {
+  color: var(--muted);
+}
+.public-site :is(.topline, .navigation, footer) {
+  background: #070707;
+  border-color: var(--line);
+}
+.public-site
+  :is(
+    .panel,
+    .car-card,
+    .booking-strip,
+    .filters,
+    .booking-panel,
+    .auth-form,
+    .empty,
+    .contact-details
+  ) {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: none;
+}
+.public-site :is(.services-band, .steps, .hotel-banner, .journey-concierge) {
+  background: #101010;
+}
+.public-site
+  :is(
+    .eyebrow,
+    .hero-copy .eyebrow,
+    .services-band .eyebrow,
+    .journey-concierge .eyebrow,
+    .hotel-banner .eyebrow
+  ),
+.public-site .signature-section h2 em,
+.public-site .hero h1 em,
+.public-site .auth-story em,
+.public-site .step-number,
+.public-site .journey-concierge li > span,
+.public-site .hotel-monogram,
+.public-site .request-form legend,
+.public-site .request-success > svg {
+  color: var(--gold);
+}
+.public-site
+  :is(
+    .destination-ribbon,
+    .page-title,
+    .booking-tabs,
+    .request-form-heading,
+    .car-bottom,
+    .detail-specs,
+    .quote
+  ),
+.public-site .service-grid,
+.public-site .service-item,
+.public-site .steps .grid > div,
+.public-site .request-form fieldset,
+.public-site .request-review dl,
+.public-site .footer-bottom {
+  border-color: var(--line);
+}
+.public-site .destination-ribbon :is(span, i) {
+  color: var(--gold);
+}
+.public-site .destination-ribbon p,
+.public-site .request-review dt {
+  color: var(--muted);
+}
+.public-site .hero {
+  background: #080808;
+}
+.public-site .hero-art {
+  background: #161616;
+}
+.public-site .hero-art::after {
+  background:
+    linear-gradient(90deg, #080808f5, #080808c9 33%, #0808082a 75%),
+    linear-gradient(0deg, #080808b3, transparent 50%);
+}
+html[dir='rtl'] .public-site .hero-art::after {
+  background:
+    linear-gradient(270deg, #080808f5, #080808c9 33%, #0808082a 75%),
+    linear-gradient(0deg, #080808b3, transparent 50%);
+}
+.public-site .auth-story {
+  background:
+    linear-gradient(#080808e6, #080808bf),
+    url('/images/egypt-journey.jpg') center / cover;
+}
+.public-site button,
+.public-site .button,
+.public-site .button.gold,
+.public-site .navigation .button {
+  background: var(--gold);
+  color: #101010;
+  border-color: var(--gold);
+}
+.public-site button:hover,
+.public-site .button:hover,
+.public-site .button.gold:hover,
+.public-site .navigation .button:hover {
+  background: #ebcd89;
+  color: #080808;
+}
+.public-site .secondary {
+  background: transparent;
+  color: var(--gold);
+  border-color: #8e7848;
+}
+.public-site .secondary:hover {
+  background: #292217;
+  color: #f0d89f;
+}
+.public-site .text-link,
+.public-site .language,
+.public-site .icon-button,
+.public-site .booking-tabs button {
+  background: transparent;
+  color: var(--gold);
+  border-color: transparent;
+}
+.public-site .text-link:hover,
+.public-site .language:hover,
+.public-site .icon-button:hover,
+.public-site .booking-tabs button:hover {
+  background: transparent;
+  color: #f2daa7;
+}
+.public-site .booking-tabs button.selected {
+  color: #f0d89f;
+  border-bottom-color: var(--gold);
+}
+.public-site .danger {
+  background: transparent;
+  color: #ffb6a9;
+  border-color: #783d35;
+}
+.public-site .danger:hover {
+  background: #301a18;
+  color: #ffcfbf;
+}
+.public-site .service-switcher a {
+  background: #141414;
+  color: #d3cbb8;
+  border-color: #54452d;
+}
+.public-site .service-switcher a.active {
+  background: var(--gold);
+  color: #101010;
+  border-color: var(--gold);
+}
+.public-site input,
+.public-site select,
+.public-site textarea {
+  background: #0c0c0c;
+  color: var(--ink);
+  border-color: #62553d;
+}
+.public-site input::placeholder,
+.public-site textarea::placeholder {
+  color: #a69f90;
+  opacity: 1;
+}
+.public-site input:focus,
+.public-site select:focus,
+.public-site textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px #d6b56822;
+}
+.public-site :focus-visible {
+  outline-color: #f0cd7c;
+}
+.public-site .check-control input {
+  accent-color: var(--gold);
+}
+.public-site .car-image,
+.public-site .detail-photo {
+  background: #1c1b19;
+}
+.public-site .image-placeholder {
+  color: #b4aa95;
+}
+.public-site .image-label {
+  background: #15120fed;
+  color: #edcf91;
+}
+.public-site .favorite {
+  background: #17130f;
+  color: #e9c87f;
+  border: 1px solid #80683c;
+}
+.public-site .favorite:hover {
+  background: #302618;
+  color: #ffe3a8;
+}
+.public-site .circle-link {
+  color: var(--gold);
+  border-color: #8e7848;
+}
+.public-site .thumbnails button {
+  background: #151515;
+  border-color: #8e7848;
+}
+.public-site .car-card:hover {
+  box-shadow: 0 14px 35px #0005;
+  border-color: #8e7848;
+}
+.public-site .notice {
+  background: #19251d;
+  color: #c6e0ce;
+  border-color: #45614b;
+}
+.public-site .notice.error {
+  background: #301a18;
+  color: #ffb9ad;
+  border-color: #805047;
+}
+.public-site .notice p {
+  color: inherit;
+}
+.public-site .spinner {
+  border-color: #4c4231;
+  border-top-color: var(--gold);
+}
+.public-site .brand-logo {
+  filter: drop-shadow(0 0 1px #d6b56880);
+}
+.public-site .skip {
+  background: #151515;
+  color: var(--gold);
+}
+@media (max-width: 760px) {
+  .public-site .navigation nav {
+    background: #090909;
+    border-color: var(--line);
+  }
+  .public-site .hero-art::after,
+  html[dir='rtl'] .public-site .hero-art::after {
+    background: linear-gradient(0deg, #080808ee, #0808088f);
+  }
+}

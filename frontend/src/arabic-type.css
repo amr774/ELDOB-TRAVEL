@@ -1,0 +1,202 @@
+@font-face {
+  font-family: 'ELDOB Naskh';
+  src: url('/fonts/noto-naskh-arabic-variable.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Naskh-inspired Arabic hierarchy. English retains its original typography. */
+html[lang='ar'] {
+  --arabic-font: 'ELDOB Naskh', 'Traditional Arabic', Tahoma, serif;
+  font-family: var(--arabic-font);
+}
+html[lang='ar'] :is(.public-site, .workspace-shell) {
+  font-family: var(--arabic-font);
+  font-size: 18px;
+  line-height: 1.85;
+}
+html[lang='ar']
+  :is(
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    small,
+    label,
+    input,
+    textarea,
+    select,
+    button,
+    .button,
+    .eyebrow,
+    legend,
+    .text-link
+  ) {
+  font-family: var(--arabic-font);
+  letter-spacing: normal;
+}
+html[lang='ar'] :is(.public-site, .workspace-shell) :is(h1, h2, h3, h4) {
+  font-family: var(--arabic-font);
+  font-weight: 700;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+html[lang='ar'] .public-site h1 {
+  font-size: clamp(36px, 4.5vw, 64px);
+}
+html[lang='ar'] .public-site .hero h1 {
+  font-size: clamp(46px, 6.1vw, 88px);
+  line-height: 1.4;
+  font-weight: 700;
+  margin-block: 24px;
+}
+html[lang='ar'] .public-site h1 em,
+html[lang='ar'] .public-site h2 em {
+  font-style: normal;
+  font-weight: 600;
+}
+html[lang='ar'] .public-site h2 {
+  font-size: clamp(30px, 3.2vw, 46px);
+}
+html[lang='ar'] .public-site .signature-section h2 {
+  font-size: clamp(34px, 3.8vw, 54px);
+}
+html[lang='ar']
+  .public-site
+  :is(
+    .panel,
+    .journey-concierge,
+    .request-form-heading,
+    .contact-details,
+    .request-review
+  )
+  h2 {
+  font-size: clamp(28px, 2.5vw, 36px);
+}
+html[lang='ar'] .public-site h3 {
+  font-size: clamp(22px, 1.8vw, 27px);
+  font-weight: 600;
+}
+html[lang='ar']
+  .public-site
+  :is(.booking-content, .service-item, .car-body)
+  h3 {
+  font-size: 25px;
+}
+html[lang='ar'] .public-site p {
+  font-size: 18px;
+  line-height: 1.9;
+}
+html[lang='ar'] .public-site .hero-copy > p:not(.eyebrow),
+html[lang='ar'] .public-site .lead {
+  font-size: 20px;
+  line-height: 1.95;
+}
+html[lang='ar'] .public-site .eyebrow {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+html[lang='ar']
+  .public-site
+  :is(label, input, textarea, select, button, .button, .text-link),
+html[lang='ar'] .public-site .navigation nav,
+html[lang='ar'] .public-site .service-switcher a {
+  font-size: 17px;
+  line-height: 1.7;
+}
+html[lang='ar'] .public-site :is(button, .button, label) {
+  font-weight: 600;
+}
+html[lang='ar']
+  .public-site
+  :is(small, .hero-note, .image-label, .reference, .badge),
+html[lang='ar'] .public-site .request-review dt,
+html[lang='ar'] .public-site .car-body p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+html[lang='ar']
+  .public-site
+  :is(.notice, .notice p, .check-list li, .request-notes),
+html[lang='ar'] .public-site .request-review dd {
+  font-size: 17px;
+  line-height: 1.9;
+}
+html[lang='ar'] .public-site .request-form legend {
+  font-family: var(--arabic-font);
+  font-size: 25px;
+  font-weight: 600;
+}
+html[lang='ar'] .public-site .topline {
+  font-size: 13px;
+  letter-spacing: 0;
+}
+html[lang='ar'] .public-site .destination-ribbon p {
+  font-family: var(--arabic-font);
+  font-size: 22px;
+}
+html[lang='ar'] .public-site .destination-ribbon > span {
+  font-size: 14px;
+  letter-spacing: 0;
+}
+html[lang='ar'] .public-site .footer-bottom {
+  font-size: 14px;
+  letter-spacing: 0;
+}
+/* Keep the Latin brand name and numerical references compact in either language. */
+.public-site .brand small {
+  font-family: 'ELDOB Naskh', Tahoma, serif;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+html[lang='ar'] .workspace-content h1 {
+  font-size: clamp(32px, 3.5vw, 46px);
+}
+html[lang='ar'] .workspace-content h2 {
+  font-size: 30px;
+}
+html[lang='ar'] .workspace-content h3 {
+  font-size: 23px;
+}
+html[lang='ar']
+  .workspace-shell
+  :is(p, label, input, select, textarea, button, .button) {
+  font-size: 17px;
+  line-height: 1.8;
+}
+html[lang='ar'] .workspace-sidebar nav a {
+  font-size: 17px;
+  line-height: 1.8;
+}
+html[lang='ar']
+  .workspace-shell
+  :is(small, .badge, .workspace-role, .workspace-public) {
+  font-size: 15px;
+}
+@media (max-width: 1000px) {
+  html[lang='ar'] .public-site .navigation nav {
+    gap: 14px;
+  }
+}
+@media (max-width: 760px) {
+  html[lang='ar'] .public-site .hero h1 {
+    font-size: clamp(42px, 9vw, 62px);
+  }
+  html[lang='ar'] .public-site .hero-copy > p:not(.eyebrow) {
+    font-size: 18px;
+  }
+  html[lang='ar'] .public-site .booking-tabs button {
+    font-size: 16px;
+    padding-inline: 12px;
+  }
+  html[lang='ar'] .public-site .service-switcher a {
+    font-size: 16px;
+  }
+  html[lang='ar'] .public-site .topline {
+    font-size: 12px;
+  }
+}
