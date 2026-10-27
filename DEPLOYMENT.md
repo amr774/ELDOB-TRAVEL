@@ -7,11 +7,11 @@
 3. Review existing employee accounts and grant operations access only to verified staff. Existing owner roles remain unchanged.
 4. Configure HTTPS, distinct random JWT secrets (at least 32 characters each), managed PostgreSQL backups, and exact `FRONTEND_ORIGINS`. Production startup rejects missing/short/equal JWT secrets. Do not expose `.env` files.
 5. Configure permanent image storage before launching. Current implementation supports a persistent disk through `UPLOAD_DIR`; an object-storage adapter is not implemented. Do not deploy uploads to ephemeral container storage.
-6. Complete real-browser testing of registration, reload/session restoration, Arabic RTL, mobile navigation, all forms and each role's workflows. This session's browser check was blocked by declined permission.
+6. Repeat acceptance tests on the deployed host. The 2026-10-27 local review exercised registration, reload/session restoration, inquiry review/submission and Arabic mobile public pages. Owner/staff API flows passed integration tests; not every role-specific browser screen was manually exercised.
 
 ## Frontend (Vercel or equivalent)
 
-Build `frontend/` with `npm ci && npm run build`; publish `dist/` only after explicit approval. Set `VITE_API_URL=/api`. Copy `vercel.json.example` to `vercel.json`, replacing **REPLACE_WITH_API_HOST** with the actual approved API host. The example provides SPA fallback plus same-origin `/api/*` and `/uploads/*` reverse proxies. Ensure the proxy forwards `Set-Cookie`, cookies and the real Origin header. Do not cache authentication responses or authenticated API data.
+Build `frontend/` with `npm ci && npm run build`; publish `dist/` after configuring and testing the actual host. Set `VITE_API_URL=/api`. Copy `vercel.json.example` to `vercel.json`, replacing **REPLACE_WITH_API_HOST** with the actual approved API host. The example provides SPA fallback plus same-origin `/api/*` and `/uploads/*` reverse proxies. Ensure the proxy forwards `Set-Cookie`, cookies and the real Origin header. Do not cache authentication responses or authenticated API data.
 
 The preferred browser deployment is a same-origin reverse proxy. This preserves `SameSite=Strict` refresh cookies with `Secure` in production. A direct Vercel-to-Render cross-site API setup will not work with these cookie settings; do not weaken them to work around a missing proxy. A same-site custom-domain arrangement also requires correct credentialed CORS and testing. `VITE_*` values are public build-time values and must never contain secrets.
 
@@ -46,3 +46,7 @@ Run migrations before starting the new backend. The backend reads freshly persis
 | `GET /health` | Public DB readiness without credentials or database details |
 
 Existing owner-only car/user/booking/dashboard endpoints remain owner-only. Customer `/bookings/:id/pay` access was intentionally removed because simulated payment flags cannot establish receipt of money. New dashboard revenue excludes those legacy flags.
+
+## Current status
+
+On 2026-10-27 the GitHub homepage/Pages/deployments checks found no published demo. No compatible connected persistent Node/PostgreSQL host was available, and no paid resources were provisioned. Publishing needs access to an HTTPS host, a dedicated PostgreSQL database and a persistent upload volume. Configure genuine contact details only for a business launch; keep them blank in an isolated demo. Use synthetic example.test accounts and separate databases; do not copy customer data. See docs/PORTFOLIO_REVIEW.md for current local evidence.
