@@ -1,3 +1,5 @@
+> Historical record: machine paths, running instances and results below belong to an earlier review. See [the current review](docs/PORTFOLIO_REVIEW.md) for the 2026-10-27 checkout.
+
 # Company management expansion — 20 October 2026
 
 ## Audit of the existing implementation
